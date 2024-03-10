@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../../slices/ProductSlice/ProductSlice';
 import Navbar from '../../navbar/Navbar';
 import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -48,7 +50,7 @@ const Home = () => {
         {/* Display Products */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {(filteredProducts.length > 0 ? filteredProducts : product).map((item) => (
-            <ProductCard key={item.id} truncateDescription={truncateDescription} item={item} />
+            (<ProductCard key={item.id} truncateDescription={truncateDescription} item={item} />)
           ))}
         </div>
       </div>
@@ -58,13 +60,18 @@ const Home = () => {
 
 const ProductCard = ({ item, truncateDescription }) => (
   <Link key={item.id} to={`/product/${item.id}`}>
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white h-full transition duration-300 transform hover:scale-105 hover:shadow-xl"
-      style={{ border: '2px solid #ff7b7b', borderRadius: '10px', background: '#fffbf8' }}>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white h-full transition duration-300 transform hover:scale-105 hover:shadow-xl">
       <div className="relative overflow-hidden h-64">
+        {/* Skeleton for image */}
+        <div className="w-full h-full object-contain bg-gray-200 rounded animate-pulse"></div>
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain absolute top-0 left-0 opacity-0 transition duration-300"
           src={item.image_url}
           alt={item.name}
+          loading="lazy"
+          onLoad={(event) => {
+            event.target.classList.add("opacity-100");
+          }}
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-0 opacity-0 hover:opacity-100 transition-all duration-300 hover:bg-opacity-50">
           <div className="text-center text-white ">
@@ -74,7 +81,11 @@ const ProductCard = ({ item, truncateDescription }) => (
         </div>
       </div>
       <div className="px-6 py-4">
-        <p className="text-gray-700 text-base">{truncateDescription(item.description)}</p>
+      {item.description ? (
+          <p className="text-gray-700 text-base">{truncateDescription(item.description)}</p>
+        ) : (
+          <Skeleton count={10} />
+        )}
       </div>
       <div className="px-6 py-4">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
@@ -87,5 +98,6 @@ const ProductCard = ({ item, truncateDescription }) => (
     </div>
   </Link>
 );
+
 
 export default Home;

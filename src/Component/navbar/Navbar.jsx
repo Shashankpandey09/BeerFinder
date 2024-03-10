@@ -1,20 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 const Navbar = () => {
-
-
-
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filteredProducts = products.filter(product =>
-      product.name.toLowerCase().includes(query) || product.tagline.toLowerCase().includes(query)
-    );
-    setFilteredProducts(filteredProducts);
-  };
 
 
   return (
@@ -25,8 +12,6 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="Search"
-            value={searchQuery}
-            onChange={handleSearch}
             className="w-48 px-4 py-2 rounded-md bg-white text-gray-800 focus:outline-none mr-4"
           />
           <button className="text-white focus:outline-none">

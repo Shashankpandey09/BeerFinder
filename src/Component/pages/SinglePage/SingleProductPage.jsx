@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const SingleProductPage = () => {
 
     const { productId } = useParams() 
-    console.log(productId)
+  
     
     const { product } = useSelector((store) => store.beer);
 
@@ -15,9 +15,9 @@ const SingleProductPage = () => {
     <div className="container mx-auto px-4 mt-8">
         <h2 className="text-2xl font-bold text-center mb-8">Item Detail</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <div className="h-[80vh]">
+      <div className="h-[80vh] ">
   <img
-    src={beerProduct.image_url}
+    src={beerProduct?.image_url}
     alt={beerProduct.name}
     className="object-contain w-full h-full rounded-lg animate-rotateX"
   />
