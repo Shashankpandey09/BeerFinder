@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#ffeded' }}>
+    <div >
       <Navbar />
       <div className="text-center text-gray-500 my-8">
         <p className="text-5xl font-bold mb-4">Welcome to Beer Finder!</p>
