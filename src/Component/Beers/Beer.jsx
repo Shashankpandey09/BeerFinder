@@ -58,7 +58,7 @@ const Beers = () => {
           placeholder="Search for beers..."
           value={searchQuery}
           onChange={handleSearch}
-          className="p-2 border border-gray-300 rounded mb-4"
+          className="p-2 border border-gray-300 w-full md:w-auto rounded mb-4"
           style={{ backgroundColor: '#fff9f9', color: '#3c3c3c' }}
         />
 
