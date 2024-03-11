@@ -16,6 +16,7 @@ const FrontPage = () => {
         <animated.h1
           className="text-4xl inline-block text-violet-600 mb-4 lg:text-5xl"
           style={fadeIn}
+          loading='lazy'
         >
           Discover Your Favorite Beer
           <img
