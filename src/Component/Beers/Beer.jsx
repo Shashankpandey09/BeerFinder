@@ -28,7 +28,7 @@ const Beers = () => {
 
   useEffect(() => {
     dispatch(getDetails());
-  }, [dispatch]);
+  }, []);
 
   const truncateDescription = (description) => {
     const words = description.split(' ');
@@ -42,9 +42,14 @@ const Beers = () => {
         <p>Explore a variety of beers and find your favorites.</p>
       </div>
       <div className="text-center">
-        <button onClick={() => dispatch(getRandomBeers())} className="bg-gray-500 px-4 py-2 rounded">
+        <button onClick={() => {dispatch(getRandomBeers())
+        setSearchQuery('')}} className="bg-orange-200 hover:bg-orange-300 mb-2 px-4 py-2 rounded">
           Suggest me some beers
         </button>
+        {randomBeers.length>0&&<button className="bg-orange-200 ml-4 hover:bg-orange-300 mb-2 px-4 py-2 rounded" onClick={()=>dispatch(getDetails())}>
+          previous bears
+        </button>}
+        
       </div>
       <div className="container mx-auto place-content-center px-4">
         {/* Search Bar */}
@@ -59,7 +64,7 @@ const Beers = () => {
 
         {/* Display Products */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {randomBeers.length > 0 ? (
+          {randomBeers.length > 0&&searchQuery.length==0 ? (
             <Suspense fallback={<LoadingSkeleton />}>
               <Random />
             </Suspense>

@@ -1,14 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const SingleProductPage = () => {
 
     const { productId } = useParams() 
   
-    
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
     const { product,randomBeers } = useSelector((store) => store.beer);
-    console.log(randomBeers)
+
 
     const beerProduct = randomBeers.length>0?randomBeers[0]:(product.find((item) => item.id == productId))
      

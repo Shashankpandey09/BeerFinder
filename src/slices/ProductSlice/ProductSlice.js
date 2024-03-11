@@ -44,6 +44,7 @@ export const BeerSlice = createSlice({
       .addCase(getDetails.fulfilled, (state, action) => {
         state.status = 'successful'
         state.product = action.payload
+        state.randomBeers=[];
         console.log(state.product)
       })
       .addCase(getDetails.pending, (state) => {
