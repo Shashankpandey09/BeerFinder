@@ -7,28 +7,29 @@ const SingleProductPage = () => {
     const { productId } = useParams() 
   
     
-    const { product } = useSelector((store) => store.beer);
+    const { product,randomBeers } = useSelector((store) => store.beer);
+    console.log(randomBeers)
 
-    const beerProduct = product.find((item) => item.id == productId)
-
+    const beerProduct = randomBeers.length>0?randomBeers[0]:(product.find((item) => item.id == productId))
+     
   return (
     <div className="container mx-auto px-4 mt-8">
         <h2 className="text-2xl font-bold text-center mb-8">Item Detail</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <div className="h-[80vh] ">
+      <div className="h-[80vh] border-nome ">
   <img
     src={beerProduct?.image_url}
-    alt={beerProduct.name}
+    alt={beerProduct?.name}
     className="object-contain w-full h-full rounded-lg animate-rotateX"
   />
 </div>
 
         <div className=''>
-          <h1 className="text-3xl font-bold mb-4 ">{beerProduct.name}</h1>
-          <p className="text-gray-600 mb-2">{beerProduct.tagline}</p>
-          <p className="text-gray-700 mb-4">{beerProduct.description}</p>
+          <h1 className="text-3xl font-bold mb-4 ">{beerProduct?.name}</h1>
+          <p className="text-gray-600 mb-2">{beerProduct?.tagline}</p>
+          <p className="text-gray-700 mb-4">{beerProduct?.description}</p>
           <div className="mb-4">
-            <p><span className="font-bold">ABV:</span> {beerProduct.abv}%</p>
+            <p><span className="font-bold">ABV:</span> {beerProduct?.abv}%</p>
             <p><span className="font-bold">IBU:</span> {beerProduct.ibu}</p>
             <p><span className="font-bold">First Brewed:</span> {beerProduct.first_brewed}</p>
           </div>
