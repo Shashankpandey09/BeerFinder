@@ -47,7 +47,7 @@ const Beers = () => {
           Suggest me some beers
         </button>
         {randomBeers.length>0&&<button className="bg-orange-200 ml-4 hover:bg-orange-300 mb-2 px-4 py-2 rounded" onClick={()=>dispatch(getDetails())}>
-          previous bears
+          previous beers
         </button>}
         
       </div>
