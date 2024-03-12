@@ -4,7 +4,7 @@ import axios from 'axios'
 const url = 'https://api.punkapi.com/v2/beers'
 const random=' https://api.punkapi.com/v2/beers/random'
 const initialState = {
-  product: [],
+  product:[] ,
   status: 'idle',
   randomBeers:[]
 }
@@ -45,6 +45,7 @@ export const BeerSlice = createSlice({
         state.status = 'successful'
         state.product = action.payload
         state.randomBeers=[];
+        (localStorage.setItem('product',JSON.stringify(state.product)))
         console.log(state.product)
       })
       .addCase(getDetails.pending, (state) => {
