@@ -18,14 +18,16 @@ const SingleProductPage = () => {
       <h2 className="text-2xl font-bold text-center mb-8">Item Detail</h2>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="h-[80vh] border-nome">
-          <img
-            src={beerProduct?.image_url}
-            alt={beerProduct?.name}
-            className="object-contain w-full h-full rounded-lg animate-rotateX"
-          />
+        <img
+  src={beerProduct?.image_url}
+  alt={beerProduct?.name}
+  className="object-contain w-full h-full rounded-lg animate-rotateX"
+  onLoad={(e) => e.target.classList.add('opacity-100')}
+/>
+
         </div>
 
-        <div className="">
+        <div >
           <h1 className="text-3xl font-bold mb-4 ">{beerProduct?.name}</h1>
           <p className="text-gray-600 mb-2">{beerProduct?.tagline}</p>
           <p className="text-gray-700 mb-4">{beerProduct?.description}</p>

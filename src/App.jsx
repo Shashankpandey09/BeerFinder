@@ -4,6 +4,13 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css'
 import SingleProductPage from './Component/pages/SinglePage/SingleProductPage';
 import FrontPage from './Component/frontPage/FrontPage';
+import cors from 'cors';
+
+let corsAllow={
+  origin:"http://localhost:5174",
+  methods:'PUT,GET,POST,PATCH,DELETE,HEAD',
+  CredentialS:true
+}
 
 
 function App() {
